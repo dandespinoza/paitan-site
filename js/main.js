@@ -61,4 +61,13 @@ const statsObserver = new IntersectionObserver((entries) => {
 const statsSection = document.querySelector('.stats');
 if (statsSection) statsObserver.observe(statsSection);
 
+// Mobile video autoplay fallback
+const heroVideo = document.querySelector('.hero__video');
+if (heroVideo) {
+  document.addEventListener('touchstart', function() {
+    heroVideo.play().catch(() => {});
+  }, { once: true });
+  heroVideo.play().catch(() => {});
+}
+
 // Form — let formsubmit.co handle it (no preventDefault)
